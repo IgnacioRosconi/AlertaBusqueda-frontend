@@ -15,21 +15,26 @@ function Navbar() {
   const handleClose = () => setShow(false);
   return (
     <>
-      <BootstrapNavbar bg="white" className="shadow-sm px-3 py-1">
+<BootstrapNavbar
+  className="shadow-sm px-4 py-1"
+  style={{ backgroundColor: "#084f9f", minHeight: "90px" }}
+>
+
         <Container fluid className="position-relative">
-          <Button
-            variant="link"
-            className="text-primary text-decoration-none fw-bold"
-            onClick={handleShow}
-          >
-            ☰ Menú
-          </Button>
+<Button
+  variant="link"
+  className="text-white text-decoration-none fw-bold"
+  style={{ fontSize: "20px" }}
+  onClick={handleShow}
+>
+  ☰ Menú
+</Button>
 
           <BootstrapNavbar.Brand className="position-absolute start-50 translate-middle-x py-0">
             <img
               src={logo}
               alt="Logo de Alerta Búsqueda"
-              style={{ height: "85px", width: "auto", objectFit: "contain" }}
+              style={{ height: "100px", width: "auto", objectFit: "contain" }}
             />
           </BootstrapNavbar.Brand>
         </Container>
