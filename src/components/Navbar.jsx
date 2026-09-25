@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo-alerta-busqueda.png";
 import {
   Button,
@@ -49,21 +50,23 @@ function Navbar() {
 
         <Offcanvas.Body>
           <Nav className="flex-column">
-            <Nav.Link
-              as="button"
-              className="text-start text-dark"
-              onClick={handleClose}
-            >
-              Inicio
-            </Nav.Link>
+  <Nav.Link
+  as={Link}
+  to="/"
+  className="text-start text-dark"
+  onClick={handleClose}
+>
+  Inicio
+</Nav.Link>
 
-            <Nav.Link
-              as="button"
-              className="text-start text-dark"
-              onClick={handleClose}
-            >
-              Búsqueda
-            </Nav.Link>
+<Nav.Link
+  as={Link}
+  to="/busqueda"
+  className="text-start text-dark"
+  onClick={handleClose}
+>
+  Búsqueda
+</Nav.Link>
 
             <Nav.Link
               as="button"

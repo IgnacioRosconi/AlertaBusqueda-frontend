@@ -1,7 +1,23 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import fondoPersonas from "../assets/fondopersonas.png";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
 function Hero() {
+  const [busqueda, setBusqueda] = useState("");
+const navigate = useNavigate();
+
+function buscarPersona(e) {
+  e.preventDefault();
+
+  const texto = busqueda.trim();
+
+  if (texto) {
+    navigate(`/busqueda?q=${encodeURIComponent(texto)}`);
+  } else {
+    navigate("/busqueda");
+  }
+}
   return (
     <main
       className="position-relative d-flex align-items-center justify-content-center text-center w-100"
@@ -37,17 +53,26 @@ style={{
           persona.
         </p>
 
-        <InputGroup className="shadow rounded-pill overflow-hidden mx-auto">
-          <Form.Control
-            type="text"
-            placeholder="Buscar por nombre, apellido o zona..."
-            aria-label="Buscar"
-            className="border-0 px-4 fs-6 py-3"
-          />
-          <Button variant="primary" className="px-4 fw-bold fs-6">
-            Buscar
-          </Button>
-        </InputGroup>
+        <Form onSubmit={buscarPersona}>
+  <InputGroup className="shadow rounded-pill overflow-hidden mx-auto">
+    <Form.Control
+      type="text"
+      value={busqueda}
+      onChange={(e) => setBusqueda(e.target.value)}
+      placeholder="Buscar por nombre, apellido o zona..."
+      aria-label="Buscar"
+      className="border-0 px-4 fs-6 py-3"
+    />
+
+    <Button
+      type="submit"
+      variant="primary"
+      className="px-4 fw-bold fs-6"
+    >
+      Buscar
+    </Button>
+  </InputGroup>
+</Form>
       </div>
     </main>
   );
