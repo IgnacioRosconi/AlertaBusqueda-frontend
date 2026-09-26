@@ -48,10 +48,6 @@ function RecibirAlertas() {
     e.preventDefault();
   }
 
-  function evitarEnvioTemporal(e) {
-    e.preventDefault();
-  }
-
   return (
     <main className="bg-light py-5">
       <Container>
