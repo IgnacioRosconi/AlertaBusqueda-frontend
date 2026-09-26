@@ -83,12 +83,14 @@ function Navbar() {
             </Nav.Link>
 
             <Nav.Link
-              as="button"
-              className="text-start text-dark"
-              onClick={handleClose}
-            >
-              Recibir Alertas
-            </Nav.Link>
+  as={Link}
+  to="/alertas"
+  className="text-start text-dark"
+  onClick={handleClose}
+>
+  Recibir Alertas
+</Nav.Link>
+            
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
