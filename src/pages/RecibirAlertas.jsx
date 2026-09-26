@@ -29,10 +29,21 @@ const provincias = [
 ];
 
 function RecibirAlertas() {
-      const [nombre, setNombre] = useState("");
+  const [nombre, setNombre] = useState("");
   const [edad, setEdad] = useState("");
   const [telefono, setTelefono] = useState("");
-  
+
+  const [alertas, setAlertas] = useState({
+    prioritarias: false,
+    menores: false,
+    adultosMayores: false,
+    miZona: false,
+  });
+
+  const todasSeleccionadas = Object.values(alertas).every(
+    (seleccionada) => seleccionada,
+  );
+
   function evitarEnvioTemporal(e) {
     e.preventDefault();
   }
@@ -63,19 +74,19 @@ function RecibirAlertas() {
                       <Form.Group controlId="nombreAlertas">
                         <Form.Label>Nombre y apellido</Form.Label>
                         <Form.Control
-  type="text"
-  placeholder="Ej: Juan Pérez"
-  value={nombre}
-  onChange={(e) =>
-    setNombre(
-      e.target.value.replace(
-        /[^A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]/g,
-        ""
-      )
-    )
-  }
-  required
-/>
+                          type="text"
+                          placeholder="Ej: Juan Pérez"
+                          value={nombre}
+                          onChange={(e) =>
+                            setNombre(
+                              e.target.value.replace(
+                                /[^A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]/g,
+                                "",
+                              ),
+                            )
+                          }
+                          required
+                        />
                       </Form.Group>
                     </Col>
 
@@ -83,16 +94,16 @@ function RecibirAlertas() {
                       <Form.Group controlId="edadAlertas">
                         <Form.Label>Edad</Form.Label>
                         <Form.Control
-  type="text"
-  inputMode="numeric"
-  maxLength={3}
-  placeholder="Ej: 30"
-  value={edad}
-  onChange={(e) =>
-    setEdad(e.target.value.replace(/[^0-9]/g, ""))
-  }
-  required
-/>
+                          type="text"
+                          inputMode="numeric"
+                          maxLength={3}
+                          placeholder="Ej: 30"
+                          value={edad}
+                          onChange={(e) =>
+                            setEdad(e.target.value.replace(/[^0-9]/g, ""))
+                          }
+                          required
+                        />
                       </Form.Group>
                     </Col>
 
@@ -100,16 +111,16 @@ function RecibirAlertas() {
                       <Form.Group controlId="telefonoAlertas">
                         <Form.Label>Teléfono</Form.Label>
                         <Form.Control
-  type="tel"
-  placeholder="Ej: 381..."
-  value={telefono}
-  onChange={(e) =>
-    setTelefono(
-      e.target.value.replace(/[^0-9+\-\s]/g, "")
-    )
-  }
-  required
-/>
+                          type="tel"
+                          placeholder="Ej: 381..."
+                          value={telefono}
+                          onChange={(e) =>
+                            setTelefono(
+                              e.target.value.replace(/[^0-9+\-\s]/g, ""),
+                            )
+                          }
+                          required
+                        />
                       </Form.Group>
                     </Col>
 
@@ -147,6 +158,13 @@ function RecibirAlertas() {
                     id="alertasPrioritarias"
                     label="Alertas prioritarias"
                     className="mb-3"
+                    checked={alertas.prioritarias}
+                    onChange={(e) =>
+                      setAlertas({
+                        ...alertas,
+                        prioritarias: e.target.checked,
+                      })
+                    }
                   />
 
                   <Form.Check
@@ -154,6 +172,13 @@ function RecibirAlertas() {
                     id="menores"
                     label="Búsquedas de niños y adolescentes"
                     className="mb-3"
+                    checked={alertas.menores}
+                    onChange={(e) =>
+                      setAlertas({
+                        ...alertas,
+                        menores: e.target.checked,
+                      })
+                    }
                   />
 
                   <Form.Check
@@ -161,6 +186,13 @@ function RecibirAlertas() {
                     id="adultosMayores"
                     label="Personas mayores"
                     className="mb-3"
+                    checked={alertas.adultosMayores}
+                    onChange={(e) =>
+                      setAlertas({
+                        ...alertas,
+                        adultosMayores: e.target.checked,
+                      })
+                    }
                   />
 
                   <Form.Check
@@ -168,6 +200,13 @@ function RecibirAlertas() {
                     id="miZona"
                     label="Desapariciones en mi zona"
                     className="mb-3"
+                    checked={alertas.miZona}
+                    onChange={(e) =>
+                      setAlertas({
+                        ...alertas,
+                        miZona: e.target.checked,
+                      })
+                    }
                   />
 
                   <div className="bg-light border rounded p-3 mb-4">
@@ -176,6 +215,15 @@ function RecibirAlertas() {
                       id="todas"
                       label="Todas las búsquedas"
                       className="fw-bold"
+                      checked={todasSeleccionadas}
+                      onChange={(e) =>
+                        setAlertas({
+                          prioritarias: e.target.checked,
+                          menores: e.target.checked,
+                          adultosMayores: e.target.checked,
+                          miZona: e.target.checked,
+                        })
+                      }
                     />
                   </div>
 
