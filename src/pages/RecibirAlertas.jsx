@@ -32,6 +32,7 @@ function RecibirAlertas() {
   const [nombre, setNombre] = useState("");
   const [edad, setEdad] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [provincia, setProvincia] = useState("");
 
   const [alertas, setAlertas] = useState({
     prioritarias: false,
@@ -44,6 +45,16 @@ function RecibirAlertas() {
     (seleccionada) => seleccionada,
   );
 
+  const nombresAlertas = {
+    prioritarias: "Alertas prioritarias",
+    menores: "Búsquedas de niños y adolescentes",
+    adultosMayores: "Personas mayores",
+    miZona: "Desapariciones en mi zona",
+  };
+
+  const alertasSeleccionadas = Object.keys(alertas)
+    .filter((tipo) => alertas[tipo])
+    .map((tipo) => nombresAlertas[tipo]);
   function evitarEnvioTemporal(e) {
     e.preventDefault();
   }
@@ -128,7 +139,11 @@ function RecibirAlertas() {
                       <Form.Group controlId="provinciaAlertas">
                         <Form.Label>Provincia</Form.Label>
 
-                        <Form.Select defaultValue="" required>
+                        <Form.Select
+                          value={provincia}
+                          onChange={(e) => setProvincia(e.target.value)}
+                          required
+                        >
                           <option value="" disabled>
                             Seleccioná una provincia
                           </option>
@@ -226,6 +241,33 @@ function RecibirAlertas() {
                       }
                     />
                   </div>
+
+                  {(nombre || provincia || alertasSeleccionadas.length > 0) && (
+                    <div className="mt-4 p-3 bg-light border rounded shadow-sm">
+                      <h3
+                        className="h5 fw-bold mb-3"
+                        style={{ color: "#0A2F6B" }}
+                      >
+                        Resumen de tus alertas
+                      </h3>
+
+                      <p className="mb-2">
+                        <strong>Nombre:</strong> {nombre || "Sin completar"}
+                      </p>
+
+                      <p className="mb-2">
+                        <strong>Provincia:</strong>{" "}
+                        {provincia || "Sin seleccionar"}
+                      </p>
+
+                      <p className="mb-0">
+                        <strong>Alertas seleccionadas:</strong>{" "}
+                        {alertasSeleccionadas.length > 0
+                          ? alertasSeleccionadas.join(", ")
+                          : "Ninguna"}
+                      </p>
+                    </div>
+                  )}
 
                   <div className="text-center mt-5">
                     <Button
