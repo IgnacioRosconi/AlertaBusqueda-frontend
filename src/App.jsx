@@ -1,5 +1,5 @@
+import Registro from "./pages/Registro";
 import { Route, Routes } from "react-router-dom";
-
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -23,7 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/busqueda" element={<Busqueda />} />
+        <Route path="/registro" element={<Registro />} />
       </Routes>
+      
     </>
   );
 }

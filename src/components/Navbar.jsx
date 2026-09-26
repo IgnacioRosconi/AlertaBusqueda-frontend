@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-alerta-busqueda.png";
+
 import {
   Button,
   Container,
@@ -14,28 +15,32 @@ function Navbar() {
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
   return (
     <>
-<BootstrapNavbar
-  className="shadow-sm px-4 py-1"
-  style={{ backgroundColor: "#084f9f", minHeight: "90px" }}
->
-
+      <BootstrapNavbar
+        className="shadow-sm px-4 py-1"
+        style={{ backgroundColor: "#084f9f", minHeight: "90px" }}
+      >
         <Container fluid className="position-relative">
-<Button
-  variant="link"
-  className="text-white text-decoration-none fw-bold"
-  style={{ fontSize: "20px" }}
-  onClick={handleShow}
->
-  ☰ Menú
-</Button>
+          <Button
+            variant="link"
+            className="text-white text-decoration-none fw-bold"
+            style={{ fontSize: "20px" }}
+            onClick={handleShow}
+          >
+            ☰ Menú
+          </Button>
 
           <BootstrapNavbar.Brand className="position-absolute start-50 translate-middle-x py-0">
             <img
               src={logo}
               alt="Logo de Alerta Búsqueda"
-              style={{ height: "100px", width: "auto", objectFit: "contain" }}
+              style={{
+                height: "100px",
+                width: "auto",
+                objectFit: "contain",
+              }}
             />
           </BootstrapNavbar.Brand>
         </Container>
@@ -50,26 +55,27 @@ function Navbar() {
 
         <Offcanvas.Body>
           <Nav className="flex-column">
-  <Nav.Link
-  as={Link}
-  to="/"
-  className="text-start text-dark"
-  onClick={handleClose}
->
-  Inicio
-</Nav.Link>
-
-<Nav.Link
-  as={Link}
-  to="/busqueda"
-  className="text-start text-dark"
-  onClick={handleClose}
->
-  Búsqueda
-</Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/"
+              className="text-start text-dark"
+              onClick={handleClose}
+            >
+              Inicio
+            </Nav.Link>
 
             <Nav.Link
-              as="button"
+              as={Link}
+              to="/busqueda"
+              className="text-start text-dark"
+              onClick={handleClose}
+            >
+              Búsqueda
+            </Nav.Link>
+
+            <Nav.Link
+              as={Link}
+              to="/registro"
               className="text-start text-dark"
               onClick={handleClose}
             >
