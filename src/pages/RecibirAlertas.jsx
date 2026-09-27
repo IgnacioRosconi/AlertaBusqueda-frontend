@@ -1,12 +1,4 @@
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  Modal,
-  Row,
-} from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useState } from "react";
 
 const provincias = [
@@ -347,6 +339,50 @@ function cerrarModal() {
             </Card>
           </Col>
         </Row>
+        <section className="py-5">
+  <div className="text-center mb-4">
+    <h2 className="fw-bold">¿Cómo funcionan las alertas?</h2>
+    <p className="text-secondary">
+      Información sobre el sistema de notificaciones de Alerta Búsqueda.
+    </p>
+  </div>
+
+  <Row className="justify-content-center">
+    <Col xs={12} lg={8}>
+      <Accordion defaultActiveKey="0">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            ¿Qué tipo de alertas voy a recibir?
+          </Accordion.Header>
+          <Accordion.Body>
+            Podrás elegir recibir alertas prioritarias, búsquedas de menores,
+            personas mayores o todas las búsquedas de tu provincia.
+          </Accordion.Body>
+        </Accordion.Item>
+
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>
+            ¿Puedo seleccionar mi provincia?
+          </Accordion.Header>
+          <Accordion.Body>
+            Sí. El formulario permite seleccionar una provincia para organizar
+            las alertas según la ubicación indicada.
+          </Accordion.Body>
+        </Accordion.Item>
+
+        <Accordion.Item eventKey="2">
+          <Accordion.Header>
+            ¿Cómo se utilizan los datos?
+          </Accordion.Header>
+          <Accordion.Body>
+            Los datos proporcionados se utilizan de manera confidencial y
+            exclusivamente para el envío de alertas pertinentes.
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </Col>
+  </Row>
+</section>
       </Container>
     </main>
   );
