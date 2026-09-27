@@ -1,4 +1,12 @@
-import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+} from "react-bootstrap";
 import { useState } from "react";
 
 const provincias = [
@@ -33,6 +41,7 @@ function RecibirAlertas() {
   const [edad, setEdad] = useState("");
   const [telefono, setTelefono] = useState("");
   const [provincia, setProvincia] = useState("");
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   const [alertas, setAlertas] = useState({
     prioritarias: false,
@@ -55,10 +64,24 @@ function RecibirAlertas() {
   const alertasSeleccionadas = Object.keys(alertas)
     .filter((tipo) => alertas[tipo])
     .map((tipo) => nombresAlertas[tipo]);
-  function evitarEnvioTemporal(e) {
+  function enviarFormulario(e) {
     e.preventDefault();
+    setMostrarModal(true);
   }
 
+function cerrarModal() {
+  setMostrarModal(false);
+  setNombre("");
+  setEdad("");
+  setTelefono("");
+  setProvincia("");
+  setAlertas({
+    prioritarias: false,
+    menores: false,
+    adultosMayores: false,
+    miZona: false,
+  });
+}
   return (
     <main className="bg-light py-5">
       <Container>
@@ -79,7 +102,7 @@ function RecibirAlertas() {
               <Card.Body className="p-4 p-md-5">
                 <h2 className="h4 fw-bold mb-4">Datos de contacto</h2>
 
-                <Form onSubmit={evitarEnvioTemporal}>
+                <Form onSubmit={enviarFormulario}>
                   <Row className="g-3 mb-4">
                     <Col md={4}>
                       <Form.Group controlId="nombreAlertas">
@@ -279,6 +302,47 @@ function RecibirAlertas() {
                     </Button>
                   </div>
                 </Form>
+
+                <Modal
+                  show={mostrarModal}
+                  onHide={cerrarModal}
+                  centered
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Solicitud de alertas registrada</Modal.Title>
+                  </Modal.Header>
+
+                  <Modal.Body>
+                    <p className="mb-2">
+                      <strong>Nombre:</strong> {nombre}
+                    </p>
+
+                    <p className="mb-2">
+                      <strong>Provincia:</strong> {provincia}
+                    </p>
+
+                    <p className="mb-3">
+                      <strong>Alertas seleccionadas:</strong>{" "}
+                      {alertasSeleccionadas.length > 0
+                        ? alertasSeleccionadas.join(", ")
+                        : "Ninguna"}
+                    </p>
+
+                    <p className="text-secondary mb-0">
+                      Tus preferencias de alertas fueron registradas
+                      correctamente.
+                    </p>
+                  </Modal.Body>
+
+                  <Modal.Footer>
+                    <Button
+                      onClick={cerrarModal}
+                      style={{ backgroundColor: "#0A2F6B" }}
+                    >
+                      Cerrar
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </Card.Body>
             </Card>
           </Col>
