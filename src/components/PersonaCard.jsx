@@ -1,40 +1,38 @@
+import { Card, Col } from "react-bootstrap";
+
 function PersonaCard({ persona, onSeleccionar }) {
   return (
-    <div className="col-sm-6 col-md-4 col-lg-3">
-      <div
-        className="card h-100 border-0 shadow-sm"
+    <Col sm={6} md={4} lg={3}>
+      <Card
+        className="persona-card h-100 border-0 shadow-sm"
         role="button"
         tabIndex="0"
         onClick={() => onSeleccionar(persona)}
-        style={{ cursor: "pointer" }}
       >
         {persona.foto ? (
-          <img
+          <Card.Img
+            variant="top"
             src={persona.foto}
-            className="card-img-top"
             alt={`Fotografía de ${persona.nombre} ${persona.apellido}`}
-            style={{ height: "250px", objectFit: "cover" }}
+            className="persona-card-imagen"
           />
         ) : (
-          <div
-            className="d-flex align-items-center justify-content-center bg-secondary text-white fw-bold"
-            style={{ height: "250px" }}
-          >
+          <div className="persona-card-sin-foto d-flex align-items-center justify-content-center bg-secondary text-white fw-bold">
             Sin fotografía
           </div>
         )}
 
-        <div className="card-body text-center">
-          <p className="fw-bold text-dark mb-1">
+        <Card.Body className="text-center">
+          <Card.Text className="fw-bold text-dark mb-1">
             {persona.nombre} {persona.apellido}
-          </p>
+          </Card.Text>
 
-          <p className="small text-secondary mb-0">
+          <Card.Text className="small text-secondary mb-0">
             {persona.provincia} - Edad {persona.edad || "No especificada"}
-          </p>
-        </div>
-      </div>
-    </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }
 

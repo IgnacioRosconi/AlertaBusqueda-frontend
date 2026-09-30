@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import { Alert, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 
 import casos from "../data/casos";
@@ -48,10 +48,10 @@ function Busqueda() {
   }
 
   return (
-    <main className="container py-5">
-      <div className="row justify-content-center mb-5">
-        <div className="col-md-8 col-lg-6 text-center">
-          <h1 className="h3 fw-bold mb-4" style={{ color: "#0A2F6B" }}>
+    <Container as="main" className="py-5">
+      <Row className="justify-content-center mb-5">
+        <Col md={8} lg={6} className="text-center">
+          <h1 className="titulo-busqueda h3 fw-bold mb-4">
             Casos Activos
           </h1>
 
@@ -65,10 +65,10 @@ function Busqueda() {
               className="border-0 px-4 py-3"
             />
           </InputGroup>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="row g-4 justify-content-center">
+      <Row className="g-4 justify-content-center">
         {personasFiltradas.length > 0 ? (
           personasFiltradas.map((persona, index) => (
             <PersonaCard
@@ -78,20 +78,23 @@ function Busqueda() {
             />
           ))
         ) : (
-          <div className="col-12">
-            <div className="alert alert-warning text-center fw-bold shadow-sm">
+          <Col xs={12}>
+            <Alert
+              variant="warning"
+              className="text-center fw-bold shadow-sm mb-0"
+            >
               No se encontraron casos que coincidan con la búsqueda.
-            </div>
-          </div>
+            </Alert>
+          </Col>
         )}
-      </div>
+      </Row>
 
       <DetallePersonaModal
         persona={personaSeleccionada}
         show={mostrarModal}
         onHide={() => setMostrarModal(false)}
       />
-    </main>
+    </Container>
   );
 }
 

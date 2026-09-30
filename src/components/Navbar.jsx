@@ -41,7 +41,7 @@ function Navbar() {
 
   return (
     <>
-      <BootstrapNavbar className="navbar-alerta shadow-sm py-0">
+      <BootstrapNavbar className="navbar-alerta bg-white border-bottom shadow-sm py-0">
         <Container fluid className="px-2 h-100 align-items-center">
           <BootstrapNavbar.Brand
             as={Link}
@@ -61,9 +61,11 @@ function Navbar() {
                 key={opcion.ruta}
                 to={opcion.ruta}
                 end={opcion.ruta === "/"}
-                className={({ isActive }) =>
-                  `nav-link-alerta ${isActive ? "activo" : ""}`
-                }
+              className={({ isActive }) =>
+  `nav-link-alerta d-flex align-items-center gap-2 fw-semibold text-decoration-none ${
+    isActive ? "activo" : ""
+  }`
+}
               >
                 <i className={`bi ${opcion.icono}`}></i>
                 <span>{opcion.texto}</span>
@@ -71,9 +73,9 @@ function Navbar() {
             ))}
           </Nav>
 
-          <Button
-            variant="link"
-            className="boton-menu-mobile d-lg-none"
+<Button
+  variant="link"
+  className="boton-menu-mobile d-lg-none text-decoration-none p-1"
             onClick={handleShow}
             aria-label="Abrir menú"
           >
@@ -82,12 +84,12 @@ function Navbar() {
         </Container>
       </BootstrapNavbar>
 
-      <Offcanvas
-        show={show}
-        onHide={handleClose}
-        placement="start"
-        className="offcanvas-alerta"
-      >
+<Offcanvas
+  show={show}
+  onHide={handleClose}
+  placement="start"
+  className="bg-white"
+>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <img
@@ -107,8 +109,10 @@ function Navbar() {
                 end={opcion.ruta === "/"}
                 onClick={handleClose}
                 className={({ isActive }) =>
-                  `nav-link-mobile ${isActive ? "activo" : ""}`
-                }
+  `nav-link-mobile d-flex align-items-center gap-3 fw-semibold text-decoration-none px-3 py-2 rounded ${
+    isActive ? "activo" : ""
+  }`
+}
               >
                 <i className={`bi ${opcion.icono}`}></i>
                 <span>{opcion.texto}</span>
