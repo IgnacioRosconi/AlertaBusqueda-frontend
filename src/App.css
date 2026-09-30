@@ -18,6 +18,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 600;
+  font-size: 15px;
   color: #111111;
   line-height: 1.4;
   max-width: 600px;
@@ -79,3 +80,174 @@
     border-right: none;
   }
 }
+
+.navbar-alerta {
+  background-color: #ffffff;
+  height: 58px;
+min-height: 58px;
+  border-bottom: 1px solid #e1e5ea;
+}
+
+.navbar-logo {
+ width: clamp(190px, 18vw, 240px);
+  height: 52px;
+  object-fit: contain;
+}
+
+.menu-principal {
+  transform: translateX(-145px);
+}
+
+.nav-link-alerta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0a2f6b;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 15px 4px 13px;
+  transition: color 0.2s ease;
+}
+
+.nav-link-alerta i {
+  font-size: 15px;
+}
+
+.nav-link-alerta:hover {
+  color: #0d6efd;
+}
+
+.nav-link-alerta.activo {
+  color: #0d6efd;
+}
+
+.nav-link-alerta.activo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  height: 3px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+}
+
+.boton-menu-mobile {
+  color: #0a2f6b;
+  font-size: 30px;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+.boton-menu-mobile:hover {
+  color: #0d6efd;
+}
+
+.offcanvas-alerta {
+  background-color: #ffffff;
+}
+
+.offcanvas-logo {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+transform: translateY(3px);
+}
+
+.nav-link-mobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #24364b;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 14px;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+}
+
+.nav-link-mobile i {
+  font-size: 18px;
+}
+
+.nav-link-mobile:hover {
+  background-color: #f3f6fa;
+  color: #0d6efd;
+}
+
+.nav-link-mobile.activo {
+  color: #0d6efd;
+  background-color: #edf4ff;
+  border-left-color: #0d6efd;
+}
+
+.footer-alerta {
+  background-color: #0a2f6b;
+  color: #ffffff;
+  padding: 28px 0 0;
+}
+
+.footer-logo {
+  width: 165px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-descripcion {
+  max-width: 320px;
+  margin: 0;
+  color: #dbe7f5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-titulo {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-enlaces,
+.footer-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-enlaces a {
+  color: #dbe7f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-enlaces a:hover {
+  color: #71bfff;
+}
+
+.footer-texto span {
+  color: #dbe7f5;
+  font-size: 14px;
+}
+
+.footer-inferior {
+  margin-top: 22px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #c6d8ed;
+  font-size: 13px;
+}
+
+.footer-utn-logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
