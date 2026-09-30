@@ -6,24 +6,22 @@
 
 .titulo-inicio {
   font-family: "Montserrat", sans-serif;
-  font-size: 48px;
+  font-size: clamp(38px, 3.2vw, 52px);
   font-weight: 800;
-  color: #111111;
+  color: #0a2f6b;
   line-height: 1.05;
   letter-spacing: -1px;
-  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.9);
 }
 
 .subtitulo-inicio {
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #111111;
-  line-height: 1.4;
-  max-width: 600px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  color: #35506f;
+  line-height: 1.5;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 768px) {
