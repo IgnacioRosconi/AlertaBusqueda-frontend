@@ -1,5 +1,20 @@
+.hero-inicio {
+  min-height: 500px;
+  background-size: 100% 100%, auto 100%;
+  background-position: center, right center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.hero-contenido {
+  z-index: 2;
+  max-width: 720px;
+}
+
+.hero-buscador {
+  max-width: 650px;
+}
+
 .titulo-inicio {
-  font-family: "Montserrat", sans-serif;
   font-size: clamp(38px, 3.2vw, 52px);
   font-weight: 800;
   color: #0a2f6b;
@@ -8,14 +23,11 @@
 }
 
 .subtitulo-inicio {
-  font-family: "Montserrat", sans-serif;
   font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 500;
   color: #35506f;
   line-height: 1.5;
   max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .tarjeta-beneficio {
@@ -53,11 +65,9 @@
   font-size: 15px;
 }
 
-.nav-link-alerta:hover {
-  color: #0d6efd;
-}
-
-.nav-link-alerta.activo {
+.nav-link-alerta:hover,
+.nav-link-alerta.activo,
+.boton-menu-mobile:hover {
   color: #0d6efd;
 }
 
@@ -75,10 +85,6 @@
 .boton-menu-mobile {
   color: #0a2f6b;
   font-size: 30px;
-}
-
-.boton-menu-mobile:hover {
-  color: #0d6efd;
 }
 
 .offcanvas-logo {
@@ -110,69 +116,74 @@
 
 .footer-alerta {
   background-color: #0a2f6b;
-  color: #ffffff;
-  padding: 28px 0 0;
 }
 
 .footer-logo {
   width: 165px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 14px;
   filter: brightness(0) invert(1);
 }
 
 .footer-descripcion {
   max-width: 320px;
-  margin: 0;
   color: #dbe7f5;
-  font-size: 13px;
   line-height: 1.6;
 }
 
-.footer-titulo {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.footer-enlaces,
-.footer-texto {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-enlaces a {
+.footer-enlaces a,
+.footer-texto span {
   color: #dbe7f5;
-  text-decoration: none;
-  font-size: 14px;
 }
 
 .footer-enlaces a:hover {
   color: #71bfff;
 }
 
-.footer-texto span {
-  color: #dbe7f5;
-  font-size: 14px;
-}
-
 .footer-inferior {
-  margin-top: 22px;
-  padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
   color: #c6d8ed;
   font-size: 13px;
 }
 
 .footer-utn-logo {
   width: 150px;
-  height: auto;
-  object-fit: contain;
   filter: brightness(0) invert(1);
+}
+
+.titulo-busqueda,
+.titulo-modal,
+.titulo-registro,
+.titulo-alertas {
+  color: #0a2f6b;
+}
+
+.persona-card {
+  cursor: pointer;
+}
+
+.persona-card-imagen,
+.persona-card-sin-foto {
+  height: 250px;
+}
+
+.persona-card-imagen {
+  object-fit: cover;
+}
+
+.detalle-persona-imagen {
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.detalle-persona-sin-foto {
+  height: 300px;
+}
+
+.boton-registro,
+.boton-alertas {
+  --bs-btn-bg: #0a2f6b;
+  --bs-btn-border-color: #0a2f6b;
+  --bs-btn-hover-bg: #082758;
+  --bs-btn-hover-border-color: #082758;
+  --bs-btn-active-bg: #082758;
+  --bs-btn-active-border-color: #082758;
 }
