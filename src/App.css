@@ -1,9 +1,3 @@
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 .titulo-inicio {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(38px, 3.2vw, 52px);
@@ -24,21 +18,6 @@
   margin-right: auto;
 }
 
-@media (max-width: 768px) {
-  .titulo-inicio {
-    font-size: 36px;
-  }
-
-  .subtitulo-inicio {
-    font-size: 17px;
-  }
-}
-
-.beneficios-section {
-  padding: 60px 0;
-  background-color: #ffffff;
-}
-
 .tarjeta-beneficio {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -48,45 +27,13 @@
   box-shadow: 0 8px 20px rgba(10, 47, 107, 0.15);
 }
 
-.tarjeta-beneficio h2 {
-  color: #0a2f6b;
-}
-
-.tarjeta-beneficio p {
-  color: #212529;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 0 15px;
-  margin-top: 16px;
-}
-
-.beneficio-icono {
-  font-size: 40px;
-  color: #0a2f6b;
-  margin-bottom: 16px;
-}
-
-.tarjeta-central {
-  border-left: 1px solid #e3e6ea;
-  border-right: 1px solid #e3e6ea;
-}
-
-@media (max-width: 767px) {
-  .tarjeta-central {
-    border-left: none;
-    border-right: none;
-  }
-}
-
 .navbar-alerta {
-  background-color: #ffffff;
   height: 58px;
-min-height: 58px;
-  border-bottom: 1px solid #e1e5ea;
+  min-height: 58px;
 }
 
 .navbar-logo {
- width: clamp(190px, 18vw, 240px);
+  width: clamp(190px, 18vw, 240px);
   height: 52px;
   object-fit: contain;
 }
@@ -97,12 +44,7 @@ min-height: 58px;
 
 .nav-link-alerta {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   color: #0a2f6b;
-  font-weight: 600;
-  text-decoration: none;
   padding: 15px 4px 13px;
   transition: color 0.2s ease;
 }
@@ -133,35 +75,22 @@ min-height: 58px;
 .boton-menu-mobile {
   color: #0a2f6b;
   font-size: 30px;
-  padding: 4px 8px;
-  text-decoration: none;
 }
 
 .boton-menu-mobile:hover {
   color: #0d6efd;
 }
 
-.offcanvas-alerta {
-  background-color: #ffffff;
-}
-
 .offcanvas-logo {
   width: 170px;
   height: auto;
   object-fit: contain;
-transform: translateY(3px);
+  transform: translateY(3px);
 }
 
 .nav-link-mobile {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   color: #0a2f6b;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 12px 14px;
   border-left: 3px solid transparent;
-  border-radius: 6px;
 }
 
 .nav-link-mobile i {
@@ -247,4 +176,3 @@ transform: translateY(3px);
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
-
