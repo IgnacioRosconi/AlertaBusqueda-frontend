@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fondoPersonas from "../assets/FondoPersonas.png";
+import fondoPersonas from "../assets/fondopersonas.png";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
 function Hero() {
