@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Benefits from "./components/Benefits";
 import Busqueda from "./pages/Busqueda";
 import RecibirAlertas from "./pages/RecibirAlertas";
+import Footer from "./components/Footer";
 
 function Inicio() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Route path="/registro" element={<Registro />} />
         <Route path="/alertas" element={<RecibirAlertas />} />
       </Routes>
-      
+      <Footer />
     </>
   );
 }
