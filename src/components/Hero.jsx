@@ -19,29 +19,33 @@ function buscarPersona(e) {
   }
 }
   return (
-    <main
-      className="position-relative d-flex align-items-center justify-content-center text-center w-100"
-      style={{
-        minHeight: "70vh",
-        backgroundColor: "#f8f9fa",
-        overflow: "hidden",
-      }}
-    >
-      <img
-  src={fondoPersonas}
-  alt="Red de personas conectadas"
-  className="position-absolute w-100 h-100 top-0 start-0"
-style={{
-  objectFit: "cover",
-  objectPosition: "center 25%",
-  zIndex: 1,
-}}
-/>
+   <main
+  className="position-relative d-flex align-items-center justify-content-center text-center w-100"
+  style={{
+    minHeight: "500px",
+   backgroundImage: `
+  linear-gradient(
+    90deg,
+    #dce6f2 0%,
+    #dce6f2 42%,
+    rgba(220, 230, 242, 0.95) 50%,
+    rgba(220, 230, 242, 0.7) 58%,
+    rgba(220, 230, 242, 0) 70%
+  ),
+  url(${fondoPersonas})
+`,
+backgroundSize: "100% 100%, auto 100%",
+    backgroundPosition: "center, right center",
+    backgroundRepeat: "no-repeat, no-repeat",
+    overflow: "hidden",
+  }}
+>
+    
 
       <div
-        className="container position-relative px-3"
-        style={{ zIndex: 2, maxWidth: "700px" }}
-      >
+  className="container position-relative px-3 ms-lg-5 ps-lg-5"
+  style={{ zIndex: 2, maxWidth: "720px" }}
+>
         <h1 className="titulo-inicio mb-3">
           TU INFORMACIÓN
           <br />
@@ -54,7 +58,10 @@ style={{
         </p>
 
         <Form onSubmit={buscarPersona}>
-  <InputGroup className="shadow rounded-pill overflow-hidden mx-auto">
+  <InputGroup
+  className="shadow rounded-pill overflow-hidden mx-auto"
+  style={{ maxWidth: "650px" }}
+>
     <Form.Control
       type="text"
       value={busqueda}
