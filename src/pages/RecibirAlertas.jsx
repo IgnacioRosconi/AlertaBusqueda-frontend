@@ -262,9 +262,7 @@ function RecibirAlertas() {
                     />
                   </div>
 
-                  {(nombre ||
-                    provincia ||
-                    alertasSeleccionadas.length > 0) && (
+                  {(nombre || provincia || alertasSeleccionadas.length > 0) && (
                     <Card className="bg-light border shadow-sm mt-4">
                       <Card.Body>
                         <h3 className="titulo-alertas h5 fw-bold mb-3">
@@ -302,9 +300,7 @@ function RecibirAlertas() {
 
                 <Modal show={mostrarModal} onHide={cerrarModal} centered>
                   <Modal.Header closeButton>
-                    <Modal.Title>
-                      Solicitud de alertas registrada
-                    </Modal.Title>
+                    <Modal.Title>Solicitud de alertas registrada</Modal.Title>
                   </Modal.Header>
 
                   <Modal.Body>
@@ -330,10 +326,7 @@ function RecibirAlertas() {
                   </Modal.Body>
 
                   <Modal.Footer>
-                    <Button
-                      className="boton-alertas"
-                      onClick={cerrarModal}
-                    >
+                    <Button className="boton-alertas" onClick={cerrarModal}>
                       Cerrar
                     </Button>
                   </Modal.Footer>

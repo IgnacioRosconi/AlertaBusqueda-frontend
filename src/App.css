@@ -1,7 +1,11 @@
 .hero-inicio {
   min-height: 500px;
-  background-size: 100% 100%, auto 100%;
-  background-position: center, right center;
+  background-size:
+    100% 100%,
+    auto 100%;
+  background-position:
+    center,
+    right center;
   background-repeat: no-repeat, no-repeat;
 }
 
@@ -31,7 +35,9 @@
 }
 
 .tarjeta-beneficio {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .tarjeta-beneficio:hover {
@@ -186,4 +192,29 @@
   --bs-btn-hover-border-color: #082758;
   --bs-btn-active-bg: #082758;
   --bs-btn-active-border-color: #082758;
+}
+
+@media (max-width: 767.98px) {
+  .hero-inicio {
+    min-height: 520px;
+    background-size:
+      100% 100%,
+      cover;
+    background-position:
+      center,
+      82% center;
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .hero-contenido {
+    max-width: 100%;
+  }
+
+  .titulo-inicio {
+    font-size: 36px;
+  }
+
+  .subtitulo-inicio {
+    font-size: 16px;
+  }
 }

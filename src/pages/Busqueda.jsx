@@ -51,9 +51,7 @@ function Busqueda() {
     <Container as="main" className="py-5">
       <Row className="justify-content-center mb-5">
         <Col md={8} lg={6} className="text-center">
-          <h1 className="titulo-busqueda h3 fw-bold mb-4">
-            Casos Activos
-          </h1>
+          <h1 className="titulo-busqueda h3 fw-bold mb-4">Casos Activos</h1>
 
           <InputGroup className="shadow rounded-pill overflow-hidden">
             <Form.Control

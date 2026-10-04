@@ -27,12 +27,11 @@ function Benefits() {
                 <i className="bi bi-geo-alt"></i>
               </div>
 
-              <h2 className="h6 fw-bold text-primary">
-                ALERTAS POR ZONA
-              </h2>
+              <h2 className="h6 fw-bold text-primary">ALERTAS POR ZONA</h2>
 
               <p className="text-dark fw-semibold small px-3 mt-3 mb-0">
-                Recibí avisos relacionados con búsquedas cercanas a tu ubicación.
+                Recibí avisos relacionados con búsquedas cercanas a tu
+                ubicación.
               </p>
             </div>
           </Col>
@@ -48,7 +47,8 @@ function Benefits() {
               </h2>
 
               <p className="text-dark fw-semibold small px-3 mt-3 mb-0">
-                La información aportada de forma responsable puede ser importante.
+                La información aportada de forma responsable puede ser
+                importante.
               </p>
             </div>
           </Col>

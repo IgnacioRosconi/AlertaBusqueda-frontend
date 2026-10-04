@@ -67,11 +67,7 @@ function Registro() {
 
     let nuevoValor = value;
 
-    if (
-      name === "nombre" ||
-      name === "apellido" ||
-      name === "nombreContacto"
-    ) {
+    if (name === "nombre" || name === "apellido" || name === "nombreContacto") {
       nuevoValor = soloLetras(value);
     }
 
@@ -146,9 +142,7 @@ function Registro() {
       <Container>
         <Row className="justify-content-center text-center mb-5">
           <Col lg={8}>
-            <h1 className="titulo-registro fw-bold mb-3">
-              REGISTRAR BÚSQUEDA
-            </h1>
+            <h1 className="titulo-registro fw-bold mb-3">REGISTRAR BÚSQUEDA</h1>
 
             <p className="text-secondary mb-0">
               Completá la información necesaria para iniciar una solicitud de
