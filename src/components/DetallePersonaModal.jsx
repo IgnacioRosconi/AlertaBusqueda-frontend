@@ -64,8 +64,7 @@ function DetallePersonaModal({ persona, show, onHide }) {
             </p>
 
             <p className="mb-0">
-              <strong>Estado:</strong>{" "}
-              {persona.estado || "Búsqueda activa"}
+              <strong>Estado:</strong> {persona.estado || "Búsqueda activa"}
             </p>
           </Col>
         </Row>

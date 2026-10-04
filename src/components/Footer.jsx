@@ -25,10 +25,18 @@ function Footer() {
             <h2 className="h6 fw-bold text-white mb-3">Enlaces útiles</h2>
 
             <div className="footer-enlaces d-flex flex-column gap-2 small">
-              <Link className="text-decoration-none" to="/">Inicio</Link>
-<Link className="text-decoration-none" to="/busqueda">Búsqueda</Link>
-<Link className="text-decoration-none" to="/registro">Registrar búsqueda</Link>
-<Link className="text-decoration-none" to="/alertas">Recibir alertas</Link>
+              <Link className="text-decoration-none" to="/">
+                Inicio
+              </Link>
+              <Link className="text-decoration-none" to="/busqueda">
+                Búsqueda
+              </Link>
+              <Link className="text-decoration-none" to="/registro">
+                Registrar búsqueda
+              </Link>
+              <Link className="text-decoration-none" to="/alertas">
+                Recibir alertas
+              </Link>
             </div>
           </Col>
 
@@ -43,9 +51,7 @@ function Footer() {
           </Col>
 
           <Col xs={12} md={6} lg={3}>
-            <h2 className="h6 fw-bold text-white mb-3">
-              Desarrollado por
-            </h2>
+            <h2 className="h6 fw-bold text-white mb-3">Desarrollado por</h2>
 
             <div className="footer-texto d-flex flex-column gap-2 small">
               <span>Pereyra Valentina Nazarena</span>
