@@ -76,7 +76,7 @@ function Registro() {
     }
 
     if (name === "telefonoContacto") {
-      nuevoValor = value.replace(/[^0-9+\-]/g, "");
+      nuevoValor = value.replace(/[^0-9+-]/g, "");
     }
 
     setFormulario({
