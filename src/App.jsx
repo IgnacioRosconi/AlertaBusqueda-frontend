@@ -1,33 +1,13 @@
-import Registro from "./pages/Registro";
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Benefits from "./components/Benefits";
-import Busqueda from "./pages/Busqueda";
-import RecibirAlertas from "./pages/RecibirAlertas";
 import Footer from "./components/Footer";
-
-function Inicio() {
-  return (
-    <>
-      <Hero />
-      <Benefits />
-    </>
-  );
-}
+import Rutas from "./components/routes/Rutas";
 
 function App() {
   return (
     <>
       <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/busqueda" element={<Busqueda />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/alertas" element={<RecibirAlertas />} />
-      </Routes>
+      <Rutas />
       <Footer />
     </>
   );
