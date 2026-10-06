@@ -1,10 +1,10 @@
 # Alerta Búsqueda
 
-Proyecto desarrollado para el Trabajo Práctico Nº 5 de Programación IV.
+Proyecto desarrollado para Programación IV.
 
 Alerta Búsqueda es una plataforma web orientada a la consulta, registro y difusión de información relacionada con la búsqueda de personas desaparecidas.
 
-En este Trabajo Práctico se migró el proyecto realizado anteriormente a una nueva versión desarrollada con React + Vite y React Bootstrap.
+El proyecto fue migrado progresivamente a una nueva versión desarrollada con React + Vite y React Bootstrap.
 
 ## Integrantes
 
@@ -99,6 +99,10 @@ También incluye:
 - Modal de confirmación.
 - Acordeón informativo.
 
+## Pages
+
+Las vistas principales se organizan como páginas independientes dentro de `src/pages`.
+
 ## Componentes reutilizables
 
 El proyecto fue dividido en componentes para mantener una estructura más organizada y reutilizable.
@@ -134,6 +138,9 @@ El componente `DetallePersonaModal` recibe la persona seleccionada, el estado de
   onHide={() => setMostrarModal(false)}
 />
 ```
+## Renderizado dinámico
+
+Se utiliza `map()` para generar listas de elementos a partir de los datos, por ejemplo en las tarjetas de búsqueda.
 
 ## Estructura del proyecto
 
@@ -146,11 +153,15 @@ src/
 │   ├── Footer.jsx
 │   ├── Hero.jsx
 │   ├── Navbar.jsx
-│   └── PersonaCard.jsx
+│   │   ├── PersonaCard.jsx
+│   └── routes/
+│       └── Rutas.jsx
 ├── data/
 │   └── casos.js
 ├── pages/
 │   ├── Busqueda.jsx
+│   ├── Error404.jsx
+│   ├── Home.jsx
 │   ├── RecibirAlertas.jsx
 │   └── Registro.jsx
 ├── App.css
@@ -161,12 +172,13 @@ src/
 
 ## Rutas
 
-La aplicación utiliza React Router DOM para navegar entre las diferentes páginas.
+Las rutas se organizan en el componente `Rutas.jsx` utilizando `Routes` y `Route`.
 
 - `/` - Inicio
 - `/busqueda` - Búsqueda de personas
 - `/registro` - Registrar búsqueda
 - `/alertas` - Recibir alertas
+- `*` - Página de error 404 para rutas inexistentes
 
 ## Responsive
 
@@ -238,8 +250,8 @@ El proyecto utiliza diferentes ramas para organizar el desarrollo.
 
 Los cambios desarrollados en ramas independientes se integran mediante Pull Requests y revisión de otro integrante del equipo.
 
-## Trabajo Práctico Nº 5
+## Evolución del proyecto
 
-Durante este trabajo se realizó la migración progresiva del proyecto anterior a React + Vite.
+El proyecto evolucionó progresivamente desde su versión inicial hacia una aplicación desarrollada con React + Vite.
 
-Se incorporaron componentes reutilizables, props, estados con `useState`, eventos de React, React Router DOM, React Bootstrap, formularios, validaciones, LocalStorage, diseño responsive, SEO básico, organización de carpetas y deploy en Vercel.
+Se incorporaron componentes reutilizables, props, estados con `useState`, eventos de React, React Router DOM, páginas independientes, rutas organizadas, formularios, validaciones, LocalStorage, diseño responsive, SEO básico y deploy en Vercel.
