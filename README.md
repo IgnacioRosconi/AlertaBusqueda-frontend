@@ -153,7 +153,7 @@ src/
 │   ├── Footer.jsx
 │   ├── Hero.jsx
 │   ├── Navbar.jsx
-│   │   ├── PersonaCard.jsx
+│   ├── PersonaCard.jsx
 │   └── routes/
 │       └── Rutas.jsx
 ├── data/
@@ -250,8 +250,35 @@ El proyecto utiliza diferentes ramas para organizar el desarrollo.
 
 Los cambios desarrollados en ramas independientes se integran mediante Pull Requests y revisión de otro integrante del equipo.
 
+## Hooks
+
+El proyecto utiliza Hooks de React para manejar estados y ejecutar acciones relacionadas con el ciclo de vida de los componentes.
+
+### useState
+
+Se utiliza `useState` para manejar información que cambia durante la interacción del usuario.
+
+Algunos ejemplos son:
+
+- Texto ingresado en los buscadores.
+- Persona seleccionada para visualizar su detalle.
+- Estado de los modales.
+- Datos ingresados en formularios.
+- Selección de alertas.
+- Solicitudes recuperadas desde LocalStorage.
+
+### useEffect
+
+En la página de búsqueda se utiliza `useEffect` para escuchar cambios en LocalStorage mediante el evento `storage`.
+
+Cuando cambia la información guardada en `solicitudesBusqueda`, el efecto actualiza el estado de las solicitudes mediante `setSolicitudesGuardadas`, permitiendo que React vuelva a renderizar la lista.
+
+El arreglo de dependencias está vacío (`[]`) porque el listener se configura una sola vez cuando se monta el componente.
+
+El efecto también retorna una función de limpieza que elimina el listener cuando el componente deja de utilizarse.
+
 ## Evolución del proyecto
 
 El proyecto evolucionó progresivamente desde su versión inicial hacia una aplicación desarrollada con React + Vite.
 
-Se incorporaron componentes reutilizables, props, estados con `useState`, eventos de React, React Router DOM, páginas independientes, rutas organizadas, formularios, validaciones, LocalStorage, diseño responsive, SEO básico y deploy en Vercel.
+Se incorporaron componentes reutilizables, props, estados con `useState`, efectos con `useEffect`, eventos de React, React Router DOM, páginas independientes, rutas organizadas, formularios, validaciones, LocalStorage, diseño responsive, SEO básico y deploy en Vercel.
