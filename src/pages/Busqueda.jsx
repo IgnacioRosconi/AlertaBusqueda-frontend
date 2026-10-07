@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 
@@ -13,20 +13,37 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function obtenerSolicitudesGuardadas() {
+  try {
+    return JSON.parse(localStorage.getItem("solicitudesBusqueda")) || [];
+  } catch {
+    return [];
+  }
+}
+
 function Busqueda() {
   const [searchParams] = useSearchParams();
 
   const [busqueda, setBusqueda] = useState(searchParams.get("q") || "");
   const [personaSeleccionada, setPersonaSeleccionada] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [solicitudesGuardadas, setSolicitudesGuardadas] = useState(
+    obtenerSolicitudesGuardadas,
+  );
 
-  const solicitudesGuardadas = (() => {
-    try {
-      return JSON.parse(localStorage.getItem("solicitudesBusqueda")) || [];
-    } catch {
-      return [];
+  useEffect(() => {
+    function actualizarSolicitudes(e) {
+      if (e.key === "solicitudesBusqueda") {
+        setSolicitudesGuardadas(obtenerSolicitudesGuardadas());
+      }
     }
-  })();
+
+    window.addEventListener("storage", actualizarSolicitudes);
+
+    return () => {
+      window.removeEventListener("storage", actualizarSolicitudes);
+    };
+  }, []);
 
   const todasLasPersonas = [...casos, ...solicitudesGuardadas];
 

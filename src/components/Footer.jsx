@@ -76,7 +76,7 @@ function Footer() {
 
         <div className="footer-inferior d-flex justify-content-between gap-3 mt-4 py-2">
           <span>Alerta Búsqueda</span>
-          <span>Trabajo Práctico Nº 5 · Programación IV</span>
+          <span>Programación IV · UTN FRT</span>
         </div>
       </Container>
     </footer>
