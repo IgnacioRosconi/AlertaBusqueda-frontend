@@ -24,16 +24,16 @@ function Hero() {
       className="hero-inicio position-relative d-flex align-items-center justify-content-center text-center w-100 overflow-hidden"
       style={{
         backgroundImage: `
-          linear-gradient(
-            90deg,
-            #dce6f2 0%,
-            #dce6f2 42%,
-            rgba(220, 230, 242, 0.95) 50%,
-            rgba(220, 230, 242, 0.7) 58%,
-            rgba(220, 230, 242, 0) 70%
-          ),
-          url(${fondoPersonas})
-        `,
+    linear-gradient(
+      90deg,
+      #dce6f2 0%,
+      #dce6f2 42%,
+      rgba(220, 230, 242, 0.95) 50%,
+      rgba(220, 230, 242, 0.7) 58%,
+      rgba(220, 230, 242, 0) 70%
+    ),
+    url(${fondoPersonas})
+  `,
       }}
     >
       <Container className="hero-contenido position-relative px-3 ms-lg-5 ps-lg-5">
