@@ -42,11 +42,14 @@ function Navbar() {
   return (
     <>
       <BootstrapNavbar className="navbar-alerta bg-white border-bottom shadow-sm py-0">
-        <Container fluid className="px-2 h-100 align-items-center">
+        <Container
+        fluid
+        className="px-3 px-md-4 px-xl-5 h-100 align-items-center"
+>
           <BootstrapNavbar.Brand
             as={Link}
             to="/"
-            className="d-flex align-items-center h-100 py-0 pt-1"
+            className="d-flex align-items-center py-0 me-2"
           >
             <img
               src={logo}
@@ -57,19 +60,16 @@ function Navbar() {
 
           <Nav className="d-none d-lg-flex align-items-center gap-5 mx-auto menu-principal">
             {opcionesMenu.map((opcion) => (
-              <NavLink
-                key={opcion.ruta}
-                to={opcion.ruta}
-                end={opcion.ruta === "/"}
-                className={({ isActive }) =>
-                  `nav-link-alerta d-flex align-items-center gap-2 fw-semibold text-decoration-none ${
-                    isActive ? "activo" : ""
-                  }`
-                }
-              >
-                <i className={`bi ${opcion.icono}`}></i>
-                <span>{opcion.texto}</span>
-              </NavLink>
+<Nav.Link
+  as={NavLink}
+  key={opcion.ruta}
+  to={opcion.ruta}
+  end={opcion.ruta === "/"}
+  className="nav-link-alerta d-flex align-items-center gap-2 fw-semibold text-decoration-none"
+>
+  <i className={`bi ${opcion.icono}`}></i>
+  <span>{opcion.texto}</span>
+</Nav.Link>
             ))}
           </Nav>
 
@@ -103,20 +103,17 @@ function Navbar() {
         <Offcanvas.Body>
           <Nav className="flex-column gap-2">
             {opcionesMenu.map((opcion) => (
-              <NavLink
-                key={opcion.ruta}
-                to={opcion.ruta}
-                end={opcion.ruta === "/"}
-                onClick={handleClose}
-                className={({ isActive }) =>
-                  `nav-link-mobile d-flex align-items-center gap-3 fw-semibold text-decoration-none px-3 py-2 rounded ${
-                    isActive ? "activo" : ""
-                  }`
-                }
-              >
-                <i className={`bi ${opcion.icono}`}></i>
-                <span>{opcion.texto}</span>
-              </NavLink>
+              <Nav.Link
+  as={NavLink}
+  key={opcion.ruta}
+  to={opcion.ruta}
+  end={opcion.ruta === "/"}
+  onClick={handleClose}
+  className="nav-link-mobile d-flex align-items-center gap-3 fw-semibold text-decoration-none px-3 py-2 rounded"
+>
+  <i className={`bi ${opcion.icono}`}></i>
+  <span>{opcion.texto}</span>
+</Nav.Link>
             ))}
           </Nav>
         </Offcanvas.Body>
