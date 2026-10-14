@@ -11,15 +11,23 @@ background-position:
 
 .hero-contenido {
   z-index: 2;
+  width: 100%;
   max-width: 720px;
+  min-width: 0;
 }
 
 .hero-buscador {
+  width: 100%;
   max-width: 650px;
+  min-width: 0;
+}
+
+.hero-buscador .form-control {
+  min-width: 0;
 }
 
 .titulo-inicio {
-  font-size: clamp(38px, 3.2vw, 52px);
+  font-size: clamp(28px, 3.2vw, 52px);
   font-weight: 800;
   color: #0a2f6b;
   line-height: 1.05;

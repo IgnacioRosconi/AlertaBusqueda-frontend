@@ -36,6 +36,18 @@ function Hero() {
   `,
       }}
     >
+
+
+      <div
+  className="position-absolute top-0 start-0 w-100 h-100 d-lg-none"
+  style={{
+    backgroundColor: "rgba(220, 230, 242, 0.20)",
+    pointerEvents: "none",
+    zIndex: 1,
+  }}
+  aria-hidden="true"
+/>
+
       <Container className="hero-contenido position-relative px-3 ms-lg-5 ps-lg-5">
         <h1 className="titulo-inicio mb-3">
           TU INFORMACIÓN
@@ -50,14 +62,18 @@ function Hero() {
 
         <Form onSubmit={buscarPersona}>
           <InputGroup className="hero-buscador shadow rounded-pill overflow-hidden mx-auto">
-            <Form.Control
-              type="text"
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              placeholder="Buscar por nombre, apellido o zona..."
-              aria-label="Buscar"
-              className="border-0 px-4 py-3 fs-6"
-            />
+
+<Form.Control
+  type="text"
+  id="busqueda-personas"
+  name="busqueda"
+  value={busqueda}
+  onChange={(e) => setBusqueda(e.target.value)}
+  placeholder="Buscar por nombre, apellido o zona..."
+  aria-label="Buscar"
+  className="border-0 px-4 py-3 fs-6"
+/>
+
 
             <Button
               type="submit"
@@ -68,8 +84,10 @@ function Hero() {
             </Button>
           </InputGroup>
         </Form>
+        
       </Container>
     </main>
+    
   );
 }
 
