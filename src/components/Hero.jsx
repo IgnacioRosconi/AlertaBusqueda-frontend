@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
@@ -48,11 +47,7 @@ function Hero() {
         aria-hidden="true"
       />
 
-      <Container
-        fluid
-        className="position-relative py-4"
-        style={{ zIndex: 2 }}
-      >
+      <Container fluid className="position-relative py-4" style={{ zIndex: 2 }}>
         <Row className="align-items-center g-4">
           <Col xs={12} lg={6}>
             <div className="hero-contenido position-relative px-3 ms-lg-5 ps-lg-5">
@@ -68,10 +63,7 @@ function Hero() {
               </p>
 
               <Form onSubmit={buscarPersona}>
-                
-<InputGroup
-  className="hero-buscador shadow rounded-pill overflow-hidden mx-auto border border-2 tarjeta-borde-azul"
->
+                <InputGroup className="hero-buscador shadow rounded-pill overflow-hidden mx-auto border border-2 tarjeta-borde-azul">
                   <Form.Control
                     type="text"
                     id="busqueda-personas"
@@ -97,11 +89,11 @@ function Hero() {
 
           <Col xs={12} lg={3} className="text-start ms-lg-4">
             <div
-  className="mx-auto mx-lg-0"
-  style={{ maxWidth: "clamp(330px, 80vw, 460px)" }}
->
-  <ConsultaGeografica />
-</div>
+              className="mx-auto mx-lg-0"
+              style={{ maxWidth: "clamp(330px, 80vw, 460px)" }}
+            >
+              <ConsultaGeografica />
+            </div>
           </Col>
         </Row>
       </Container>

@@ -22,7 +22,7 @@ function Benefits() {
           </Col>
 
           <Col md={4}>
-           <div className="tarjeta-beneficio p-4 h-100 rounded-5 border border-2 shadow-sm tarjeta-borde-azul">
+            <div className="tarjeta-beneficio p-4 h-100 rounded-5 border border-2 shadow-sm tarjeta-borde-azul">
               <div className="fs-1 text-primary mb-3">
                 <i className="bi bi-geo-alt"></i>
               </div>
@@ -37,7 +37,7 @@ function Benefits() {
           </Col>
 
           <Col md={4}>
-           <div className="tarjeta-beneficio p-4 h-100 rounded-5 border border-2 shadow-sm tarjeta-borde-azul">
+            <div className="tarjeta-beneficio p-4 h-100 rounded-5 border border-2 shadow-sm tarjeta-borde-azul">
               <div className="fs-1 text-primary mb-3">
                 <i className="bi bi-check-circle"></i>
               </div>

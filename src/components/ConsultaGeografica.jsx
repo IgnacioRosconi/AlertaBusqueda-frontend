@@ -12,53 +12,46 @@ function ConsultaGeografica() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
 
-  const controller = new AbortController();
-
-  async function cargarProvincias() {
-    try {
-      const respuesta = await axios.get(
-  `${URL_API}/provincias`,
-        {
+    async function cargarProvincias() {
+      try {
+        const respuesta = await axios.get(`${URL_API}/provincias`, {
           params: {
             campos: "id,nombre",
             max: 24,
             orden: "nombre",
           },
           signal: controller.signal,
-        }
-      );
+        });
 
-      if (!controller.signal.aborted) {
-        setProvincias(respuesta.data.provincias || []);
-      }
-    } catch (errorPeticion) {
-      if (!axios.isCancel(errorPeticion)) {
-        setError("No se pudieron cargar las provincias.");
-      }
-    } finally {
-      if (!controller.signal.aborted) {
-        setCargando(false);
+        if (!controller.signal.aborted) {
+          setProvincias(respuesta.data.provincias || []);
+        }
+      } catch (errorPeticion) {
+        if (!axios.isCancel(errorPeticion)) {
+          setError("No se pudieron cargar las provincias.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setCargando(false);
+        }
       }
     }
-  }
 
-  cargarProvincias();
+    cargarProvincias();
 
-  return () => controller.abort();
-}, []);
+    return () => controller.abort();
+  }, []);
 
+  useEffect(() => {
+    if (!provincia) return;
 
-useEffect(() => {
-  if (!provincia) return;
+    const controller = new AbortController();
 
-  const controller = new AbortController();
-
-  async function cargarLocalidades() {
-    try {
-      const respuesta = await axios.get(
-        `${URL_API}/localidades`,
-        {
+    async function cargarLocalidades() {
+      try {
+        const respuesta = await axios.get(`${URL_API}/localidades`, {
           params: {
             provincia: provincia,
             campos: "id,nombre",
@@ -66,120 +59,100 @@ useEffect(() => {
             orden: "nombre",
           },
           signal: controller.signal,
-        }
-      );
+        });
 
-      if (!controller.signal.aborted) {
-        setLocalidades(respuesta.data.localidades || []);
-      }
-    } catch (errorPeticion) {
-      if (!controller.signal.aborted && !axios.isCancel(errorPeticion)) {
-        setErrorLocalidades("No se pudieron cargar las localidades.");
-      }
-    } finally {
-      if (!controller.signal.aborted) {
-        setCargandoLocalidades(false);
+        if (!controller.signal.aborted) {
+          setLocalidades(respuesta.data.localidades || []);
+        }
+      } catch (errorPeticion) {
+        if (!controller.signal.aborted && !axios.isCancel(errorPeticion)) {
+          setErrorLocalidades("No se pudieron cargar las localidades.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setCargandoLocalidades(false);
+        }
       }
     }
-  }
 
-  cargarLocalidades();
+    cargarLocalidades();
 
-  return () => controller.abort();
-}, [provincia]);
-
+    return () => controller.abort();
+  }, [provincia]);
 
   return (
-  
-<Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
-
+    <Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
       <Card.Body className="p-3">
-        <h2
-  className="h5 fw-bold mb-2"
-  style={{ color: "#0a2f6b" }}
->
-  Consulta geográfica
-</h2>
+        <h2 className="h5 fw-bold mb-2" style={{ color: "#0a2f6b" }}>
+          Consulta geográfica
+        </h2>
 
         <p className="text-secondary mb-2">
           Seleccioná una provincia para consultar sus localidades.
         </p>
 
-        {error && (
-  <Alert variant="danger">
-    {error}
-  </Alert>
-)}
+        {error && <Alert variant="danger">{error}</Alert>}
 
         <Form.Group controlId="provinciaGeografica">
           <Form.Label>Provincia</Form.Label>
 
+          <Form.Select
+            value={provincia}
+            onChange={(e) => {
+              const nuevaProvincia = e.target.value;
 
-<Form.Select
-  value={provincia}
+              setProvincia(nuevaProvincia);
+              setLocalidades([]);
+              setErrorLocalidades("");
+              setCargandoLocalidades(Boolean(nuevaProvincia));
+            }}
+            disabled={cargando || Boolean(error)}
+          >
+            <option value="">
+              {cargando ? "Cargando provincias..." : "Seleccioná una provincia"}
+            </option>
 
-  
-
-  
-  
-onChange={(e) => {
-  const nuevaProvincia = e.target.value;
-
-  setProvincia(nuevaProvincia);
-  setLocalidades([]);
-  setErrorLocalidades("");
-  setCargandoLocalidades(Boolean(nuevaProvincia));
-}}
-
-  disabled={cargando || Boolean(error)}
->
-  <option value="">
-    {cargando ? "Cargando provincias..." : "Seleccioná una provincia"}
-  </option>
-
-  {provincias.map((item) => (
-    <option key={item.id} value={item.id}>
-      {item.nombre}
-    </option>
-  ))}
-</Form.Select>
-
+            {provincias.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.nombre}
+              </option>
+            ))}
+          </Form.Select>
         </Form.Group>
-        
-{provincia && (
-  <Form.Group controlId="localidadGeografica" className="mt-3">
-    <Form.Label>Localidad</Form.Label>
 
-    <Form.Select
-      key={provincia}
-      defaultValue=""
-      disabled={
-        cargandoLocalidades ||
-        Boolean(errorLocalidades) ||
-        localidades.length === 0
-      }
-    >
-      <option value="">
-        {cargandoLocalidades
-          ? "Cargando localidades..."
-          : "Seleccioná una localidad"}
-      </option>
+        {provincia && (
+          <Form.Group controlId="localidadGeografica" className="mt-3">
+            <Form.Label>Localidad</Form.Label>
 
-      {localidades.map((item) => (
-        <option key={item.id} value={item.id}>
-          {item.nombre}
-        </option>
-      ))}
-    </Form.Select>
+            <Form.Select
+              key={provincia}
+              defaultValue=""
+              disabled={
+                cargandoLocalidades ||
+                Boolean(errorLocalidades) ||
+                localidades.length === 0
+              }
+            >
+              <option value="">
+                {cargandoLocalidades
+                  ? "Cargando localidades..."
+                  : "Seleccioná una localidad"}
+              </option>
 
-    {errorLocalidades && (
-      <Alert variant="danger" className="mt-2">
-        {errorLocalidades}
-      </Alert>
-    )}
-  </Form.Group>
-)}
+              {localidades.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.nombre}
+                </option>
+              ))}
+            </Form.Select>
 
+            {errorLocalidades && (
+              <Alert variant="danger" className="mt-2">
+                {errorLocalidades}
+              </Alert>
+            )}
+          </Form.Group>
+        )}
       </Card.Body>
     </Card>
   );

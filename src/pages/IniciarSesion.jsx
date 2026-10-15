@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -24,7 +23,7 @@ function IniciarSesion() {
 
     try {
       const usuarios = JSON.parse(
-        localStorage.getItem("usuariosAlertaBusqueda") || "[]"
+        localStorage.getItem("usuariosAlertaBusqueda") || "[]",
       );
 
       if (!Array.isArray(usuarios)) {
@@ -32,7 +31,7 @@ function IniciarSesion() {
       }
 
       const usuarioEncontrado = usuarios.find(
-        (usuario) => usuario.correo === correoIngresado
+        (usuario) => usuario.correo === correoIngresado,
       );
 
       if (!usuarioEncontrado) {
@@ -45,7 +44,7 @@ function IniciarSesion() {
 
       sessionStorage.setItem(
         "sesionAlertaBusqueda",
-        JSON.stringify(usuarioEncontrado)
+        JSON.stringify(usuarioEncontrado),
       );
 
       window.dispatchEvent(new Event("sesionAlertaBusquedaActualizada"));
@@ -68,43 +67,37 @@ function IniciarSesion() {
         <Row className="justify-content-center">
           <Col xs={12} md={8} lg={6}>
             <div className="text-center mb-4">
-              <h1 className="titulo-registro fw-bold mb-3">
-                INICIAR SESIÓN
-              </h1>
+              <h1 className="titulo-registro fw-bold mb-3">INICIAR SESIÓN</h1>
 
               <p className="text-secondary">
-                Ingresá a Alerta Búsqueda para participar
-                y administrar tus preferencias de alertas.
+                Ingresá a Alerta Búsqueda para participar y administrar tus
+                preferencias de alertas.
               </p>
             </div>
 
             <Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
               <Card.Body className="p-4 p-md-5">
-                <h2 className="h5 fw-bold mb-4">
-                  Acceso a tu cuenta
-                </h2>
+                <h2 className="h5 fw-bold mb-4">Acceso a tu cuenta</h2>
 
                 <Form onSubmit={enviarFormulario}>
-                 
-<Form.Group className="mb-4">
-  <Form.Label htmlFor="correo-inicio-sesion">
-    Correo electrónico
-  </Form.Label>
+                  <Form.Group className="mb-4">
+                    <Form.Label htmlFor="correo-inicio-sesion">
+                      Correo electrónico
+                    </Form.Label>
 
-  <Form.Control
-    type="email"
-    id="correo-inicio-sesion"
-    name="correo"
-    placeholder="ejemplo@correo.com"
-    value={correo}
-    onChange={(e) => {
-      setCorreo(e.target.value);
-      setAviso(null);
-    }}
-    required
-  />
-</Form.Group>
-
+                    <Form.Control
+                      type="email"
+                      id="correo-inicio-sesion"
+                      name="correo"
+                      placeholder="ejemplo@correo.com"
+                      value={correo}
+                      onChange={(e) => {
+                        setCorreo(e.target.value);
+                        setAviso(null);
+                      }}
+                      required
+                    />
+                  </Form.Group>
 
                   <div className="d-grid">
                     <Button
@@ -116,10 +109,7 @@ function IniciarSesion() {
                   </div>
 
                   {aviso && (
-                    <Alert
-                      variant={aviso.tipo}
-                      className="mt-3 mb-0"
-                    >
+                    <Alert variant={aviso.tipo} className="mt-3 mb-0">
                       {aviso.mensaje}
                     </Alert>
                   )}

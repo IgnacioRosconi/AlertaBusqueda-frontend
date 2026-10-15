@@ -1,11 +1,11 @@
 .hero-inicio {
- min-height: 500px;
-background-size:
-  100% 100%,
-  auto 100%;
-background-position:
-  center,
-  calc(100% + clamp(0px, calc(768px - 100vw), 85px)) center;
+  min-height: 500px;
+  background-size:
+    100% 100%,
+    auto 100%;
+  background-position:
+    center,
+    calc(100% + clamp(0px, calc(768px - 100vw), 85px)) center;
   background-repeat: no-repeat, no-repeat;
 }
 
@@ -211,4 +211,3 @@ background-position:
 .tarjeta-borde-azul {
   --bs-border-color: #0a2f6b;
 }
-
