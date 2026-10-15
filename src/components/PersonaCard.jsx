@@ -4,7 +4,7 @@ function PersonaCard({ persona, onSeleccionar }) {
   return (
     <Col sm={6} md={4} lg={3}>
       <Card
-        className="persona-card h-100 border-0 shadow-sm"
+        className="persona-card h-100 border border-2 rounded-5 shadow-sm tarjeta-borde-azul overflow-hidden"
         role="button"
         tabIndex="0"
         onClick={() => onSeleccionar(persona)}

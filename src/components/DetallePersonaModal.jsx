@@ -6,7 +6,13 @@ function DetallePersonaModal({ persona, show, onHide }) {
   }
 
   return (
-    <Modal show={show} onHide={onHide} centered size="lg">
+    <Modal
+      show={show}
+      onHide={onHide}
+      centered
+      size="lg"
+      contentClassName="border border-2 rounded-5 shadow-sm tarjeta-borde-azul"
+    >
       <Modal.Header closeButton>
         <Modal.Title className="titulo-modal fw-bold">
           Detalle de la búsqueda
