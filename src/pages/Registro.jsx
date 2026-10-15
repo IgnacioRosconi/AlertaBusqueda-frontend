@@ -154,7 +154,7 @@ function Registro() {
 
         <Row className="justify-content-center">
           <Col xs={12} lg={9}>
-            <Card className="shadow-sm border-0 rounded-3">
+            <Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
               <Card.Body className="p-4 p-md-5">
                 <Form onSubmit={enviarFormulario}>
                   <h2 className="h4 mb-4 fw-bold">

@@ -78,7 +78,7 @@ function IniciarSesion() {
               </p>
             </div>
 
-            <Card className="border-0 shadow-sm rounded-3">
+            <Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
               <Card.Body className="p-4 p-md-5">
                 <h2 className="h5 fw-bold mb-4">
                   Acceso a tu cuenta

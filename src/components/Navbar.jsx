@@ -108,12 +108,12 @@ function Navbar() {
 
           <div className="d-none d-xl-flex align-items-center gap-2">
             {sesionIniciada ? (
-              <Button
-                variant="outline-secondary"
-                size="sm"
-                className="fw-semibold text-nowrap"
-                onClick={cerrarSesion}
-              >
+            <Button
+  variant="primary"
+  size="sm"
+  className="boton-registro rounded-pill fw-semibold text-nowrap"
+  onClick={cerrarSesion}
+>
                 <i className="bi bi-box-arrow-right me-2"></i>
                 Cerrar sesión
               </Button>
@@ -187,11 +187,11 @@ function Navbar() {
 
           <Nav className="flex-column gap-2 mt-3 border-top pt-3">
             {sesionIniciada ? (
-              <Button
-                variant="outline-secondary"
-                className="text-start fw-semibold"
-                onClick={cerrarSesion}
-              >
+             <Button
+  variant="primary"
+  className="boton-registro rounded-pill text-start fw-semibold"
+  onClick={cerrarSesion}
+>
                 <i className="bi bi-box-arrow-right me-2"></i>
                 Cerrar sesión
               </Button>

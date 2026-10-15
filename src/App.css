@@ -208,4 +208,7 @@ background-position:
   --bs-btn-active-bg: #082758;
   --bs-btn-active-border-color: #082758;
 }
+.tarjeta-borde-azul {
+  --bs-border-color: #0a2f6b;
+}
 

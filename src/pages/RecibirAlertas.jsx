@@ -103,7 +103,7 @@ function RecibirAlertas() {
 
         <Row className="justify-content-center">
           <Col xs={12} lg={8}>
-            <Card className="shadow-sm border-0">
+            <Card className="border border-2 rounded-5 shadow-sm tarjeta-borde-azul">
               <Card.Body className="p-4 p-md-5">
                 <h2 className="h4 fw-bold mb-4">Datos de contacto</h2>
 
