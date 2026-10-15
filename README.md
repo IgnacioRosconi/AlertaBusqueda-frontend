@@ -1,10 +1,13 @@
+
 # Alerta Búsqueda
 
-Proyecto desarrollado para Programación IV.
+Proyecto desarrollado para la materia **Programación IV** de la Tecnicatura Universitaria en Programación de la UTN-FRT.
 
 Alerta Búsqueda es una plataforma web orientada a la consulta, registro y difusión de información relacionada con la búsqueda de personas desaparecidas.
 
-El proyecto fue migrado progresivamente a una nueva versión desarrollada con React + Vite y React Bootstrap.
+El proyecto comenzó con HTML, CSS y JavaScript, y posteriormente fue migrado a React + Vite. Durante los trabajos prácticos se incorporaron componentes reutilizables, rutas, Hooks de React y consultas a una API pública.
+
+Actualmente es un prototipo educativo. No utiliza una base de datos propia ni realiza verificaciones oficiales de los casos.
 
 ## Integrantes
 
@@ -13,78 +16,97 @@ El proyecto fue migrado progresivamente a una nueva versión desarrollada con Re
 
 ## Tecnologías utilizadas
 
-- React
-- Vite
+- HTML5
+- CSS3
 - JavaScript
 - JSX
+- React
+- Vite
 - React Bootstrap
 - Bootstrap
 - Bootstrap Icons
 - React Router DOM
-- HTML
-- CSS
+- Axios
+- API Georef de Argentina
 - LocalStorage
-- Git
-- GitHub
+- SessionStorage
+- Git y GitHub
 - Vercel
 
 ## Funcionalidades principales
 
 ### Inicio
 
-La página principal contiene:
+La página de Inicio contiene:
 
-- Navbar de navegación.
-- Hero principal.
+- Navbar con navegación responsive.
+- Hero principal con imagen de fondo.
 - Buscador de personas.
-- Sección informativa con beneficios de la plataforma.
+- Consulta geográfica de provincias y localidades.
+- Tarjetas informativas.
 - Footer con información del proyecto.
 
-El buscador del inicio permite ingresar un nombre, apellido o zona y redirige a la sección de búsqueda utilizando parámetros en la URL.
+El buscador permite ingresar un nombre, apellido o zona y redirige a la página de búsqueda mediante un parámetro en la URL.
+
+### Consulta geográfica
+
+Se incorporó el componente `ConsultaGeografica.jsx`, que consume la API pública Georef de Argentina utilizando Axios.
+
+Permite:
+
+- Obtener el listado de provincias.
+- Seleccionar una provincia.
+- Consultar las localidades correspondientes.
+- Mostrar los datos en selectores de React Bootstrap.
+- Actualizar las localidades cuando cambia la provincia.
+- Mostrar mensajes de carga y error.
+
+Las solicitudes se realizan mediante el método HTTP GET.
+
+Se utiliza `AbortController` para cancelar solicitudes pendientes cuando corresponde.
 
 ### Búsqueda de personas
 
-La sección de búsqueda permite:
+La página de búsqueda permite:
 
-- Visualizar casos registrados.
-- Buscar por nombre.
-- Buscar por apellido.
-- Buscar por provincia.
-- Buscar por zona.
+- Mostrar tarjetas de personas.
+- Buscar por nombre y apellido.
+- Buscar por provincia y zona.
 - Ignorar diferencias entre mayúsculas, minúsculas y tildes.
 - Mostrar un mensaje cuando no existen resultados.
-- Visualizar los datos de una persona mediante un modal.
+- Abrir un modal con los detalles de una persona.
 
-Además, las nuevas solicitudes guardadas desde el formulario de registro se incorporan al listado utilizando LocalStorage.
+Los casos de ejemplo se encuentran en `src/data/casos.js`.
+
+Las solicitudes creadas desde el formulario de registro también se incorporan al listado mediante LocalStorage.
 
 ### Registrar búsqueda
 
-El formulario de registro permite cargar información de una persona desaparecida.
+El formulario permite ingresar:
 
-Incluye:
-
-- Nombre.
-- Apellido.
+- Nombre y apellido.
 - Edad.
 - Provincia.
 - Fecha de desaparición.
-- Último lugar donde fue vista.
+- Último lugar donde fue vista la persona.
 - Descripción física.
 - Información adicional.
 - Fotografía.
 - Datos de contacto del denunciante.
 
-Se implementaron validaciones para evitar números en los campos de nombres y letras en campos numéricos.
+Se implementaron validaciones para evitar números en los campos de nombres y letras en los campos numéricos.
 
-Las imágenes seleccionadas se procesan mediante FileReader y se almacenan en formato Base64.
+Las fotografías seleccionadas se procesan mediante FileReader y se convierten a Base64.
 
 Las solicitudes se guardan en LocalStorage con el estado:
 
 `Pendiente de verificación`
 
+Por el momento, este estado forma parte de la simulación del proyecto y no representa una verificación institucional real.
+
 ### Recibir alertas
 
-La sección de alertas permite completar datos de contacto y seleccionar diferentes tipos de avisos:
+El formulario permite ingresar datos de contacto y seleccionar preferencias de alertas:
 
 - Alertas prioritarias.
 - Búsquedas de niños y adolescentes.
@@ -92,20 +114,49 @@ La sección de alertas permite completar datos de contacto y seleccionar diferen
 - Desapariciones en la zona seleccionada.
 - Todas las búsquedas.
 
-También incluye:
+También se implementaron:
 
-- Resumen dinámico de las opciones seleccionadas.
+- Selección mediante checkboxes.
+- Resumen dinámico de las opciones elegidas.
 - Opción para seleccionar todas las alertas.
 - Modal de confirmación.
 - Acordeón informativo.
 
-## Pages
+En esta etapa se simula el registro de preferencias. Todavía no se envían notificaciones reales.
 
-Las vistas principales se organizan como páginas independientes dentro de `src/pages`.
+### Crear cuenta
+
+Se incorporó una página para crear cuentas de prueba.
+
+El formulario solicita:
+
+- Nombre.
+- Apellido.
+- Correo electrónico.
+
+Se realizan validaciones sobre los datos ingresados y se comprueba que el correo no esté registrado previamente.
+
+Las cuentas se guardan localmente utilizando la clave `usuariosAlertaBusqueda`.
+
+Este registro es una simulación educativa. No utiliza un servidor de autenticación.
+
+### Iniciar sesión
+
+Se incorporó un formulario de inicio de sesión de prueba.
+
+El usuario ingresa el correo electrónico con el que creó su cuenta.
+
+La aplicación busca ese correo entre los usuarios almacenados en LocalStorage y, si existe, registra una sesión en SessionStorage.
+
+La sesión permite acceder a las páginas protegidas.
+
+También se agregó la opción para cerrar sesión desde el Navbar.
+
+Actualmente no se implementaron contraseñas ni autenticación mediante un backend.
 
 ## Componentes reutilizables
 
-El proyecto fue dividido en componentes para mantener una estructura más organizada y reutilizable.
+El proyecto se organiza mediante componentes de React para evitar repetir código y facilitar su mantenimiento.
 
 Entre los principales componentes se encuentran:
 
@@ -113,14 +164,16 @@ Entre los principales componentes se encuentran:
 - `Footer`
 - `Hero`
 - `Benefits`
+- `ConsultaGeografica`
 - `PersonaCard`
 - `DetallePersonaModal`
+- `Rutas`
 
-## Uso de props
+### Uso de props
 
-Se utilizan props para comunicar información entre componentes.
+Se utilizan props para pasar información entre componentes.
 
-Por ejemplo, el componente `PersonaCard` recibe los datos de una persona y una función para seleccionar el caso:
+Por ejemplo, `PersonaCard` recibe los datos de una persona y una función para abrir sus detalles:
 
 ```jsx
 <PersonaCard
@@ -129,7 +182,7 @@ Por ejemplo, el componente `PersonaCard` recibe los datos de una persona y una f
 />
 ```
 
-El componente `DetallePersonaModal` recibe la persona seleccionada, el estado del modal y la función utilizada para cerrarlo:
+El modal recibe la persona seleccionada, su estado de visualización y una función para cerrarlo:
 
 ```jsx
 <DetallePersonaModal
@@ -138,9 +191,138 @@ El componente `DetallePersonaModal` recibe la persona seleccionada, el estado de
   onHide={() => setMostrarModal(false)}
 />
 ```
-## Renderizado dinámico
 
-Se utiliza `map()` para generar listas de elementos a partir de los datos, por ejemplo en las tarjetas de búsqueda.
+## Hooks de React
+
+### useState
+
+Se utiliza `useState` para administrar información que cambia durante la interacción del usuario.
+
+Algunos ejemplos son:
+
+- Texto ingresado en el buscador.
+- Datos de los formularios.
+- Persona seleccionada.
+- Apertura y cierre de modales.
+- Selección de tipos de alertas.
+- Provincia seleccionada.
+- Listados de provincias y localidades.
+- Estados de carga y mensajes de error.
+- Estado de la sesión en el Navbar.
+
+Cuando cambia un estado, React actualiza la parte correspondiente de la interfaz.
+
+### useEffect
+
+Se utiliza `useEffect` para ejecutar acciones relacionadas con los cambios o el montaje de los componentes.
+
+En `Busqueda.jsx` se utiliza para escuchar el evento `storage` y actualizar las solicitudes guardadas cuando corresponde.
+
+En `ConsultaGeografica.jsx` se implementan dos efectos:
+
+1. El primero consulta las provincias cuando se monta el componente.
+2. El segundo consulta las localidades cuando cambia la provincia seleccionada.
+
+Los efectos de la consulta geográfica utilizan `AbortController` para cancelar solicitudes pendientes cuando corresponde.
+
+También se utiliza un efecto en el Navbar para actualizar la información visual de la sesión.
+
+## Consumo de API con Axios
+
+Para el TP8 se incorporó Axios, que permite realizar solicitudes HTTP a servicios externos.
+
+Se utiliza la API pública Georef de Argentina:
+
+https://apis.datos.gob.ar/georef/api
+
+El componente `ConsultaGeografica.jsx` realiza dos tipos de consultas:
+
+**Provincias:**
+
+`GET /provincias`
+
+Obtiene el listado de provincias de Argentina.
+
+**Localidades:**
+
+`GET /localidades`
+
+Obtiene las localidades correspondientes a la provincia seleccionada.
+
+Las solicitudes utilizan parámetros para indicar qué información necesitamos obtener.
+
+Las respuestas se procesan y se almacenan mediante `useState` para mostrarlas dinámicamente.
+
+También se contemplan estados de carga y posibles errores en las solicitudes.
+
+## Variables de entorno
+
+La dirección base de la API se configura mediante una variable de entorno de Vite.
+
+Variable utilizada:
+
+`VITE_GEOREF_API_URL`
+
+En el componente se obtiene mediante:
+
+```jsx
+const URL_API = import.meta.env.VITE_GEOREF_API_URL;
+```
+
+Para ejecutar el proyecto localmente, se necesita un archivo `.env` en la carpeta principal con la variable correspondiente:
+
+```env
+VITE_GEOREF_API_URL=https://apis.datos.gob.ar/georef/api
+```
+
+El archivo `.env` está incluido en `.gitignore` para evitar que se suba al repositorio.
+
+En Vercel se configura la misma variable para los entornos Production y Preview.
+
+## Almacenamiento local
+
+El proyecto utiliza almacenamiento del navegador para simular algunas funcionalidades sin implementar una base de datos.
+
+### LocalStorage
+
+Se utilizan las siguientes claves:
+
+- `solicitudesBusqueda`: almacena las solicitudes creadas desde el formulario.
+- `usuariosAlertaBusqueda`: almacena las cuentas de prueba registradas.
+
+Los datos permanecen en el navegador hasta que se eliminan.
+
+### SessionStorage
+
+Se utiliza la clave:
+
+- `sesionAlertaBusqueda`: almacena la sesión de prueba iniciada por el usuario.
+
+Esta información se utiliza para controlar el acceso a determinadas rutas y mostrar las opciones correspondientes en el Navbar.
+
+Este almacenamiento no reemplaza una autenticación real ni una base de datos.
+
+## Rutas
+
+La navegación se organiza mediante React Router DOM.
+
+El componente `Rutas.jsx` utiliza `Routes` y `Route`, mientras que `main.jsx` envuelve la aplicación con `BrowserRouter`.
+
+Rutas implementadas:
+
+| Ruta | Página |
+|---|---|
+| `/` | Inicio |
+| `/busqueda` | Búsqueda de personas |
+| `/registro` | Registrar búsqueda |
+| `/alertas` | Recibir alertas |
+| `/crear-cuenta` | Crear cuenta |
+| `/iniciar-sesion` | Iniciar sesión |
+| `*` | Error 404 |
+
+Las rutas `/registro` y `/alertas` están protegidas.
+
+Si un usuario intenta acceder sin una sesión de prueba iniciada, es redirigido a `/iniciar-sesion`.
 
 ## Estructura del proyecto
 
@@ -148,20 +330,23 @@ Se utiliza `map()` para generar listas de elementos a partir de los datos, por e
 src/
 ├── assets/
 ├── components/
+│   ├── routes/
+│   │   └── Rutas.jsx
 │   ├── Benefits.jsx
+│   ├── ConsultaGeografica.jsx
 │   ├── DetallePersonaModal.jsx
 │   ├── Footer.jsx
 │   ├── Hero.jsx
 │   ├── Navbar.jsx
-│   ├── PersonaCard.jsx
-│   └── routes/
-│       └── Rutas.jsx
+│   └── PersonaCard.jsx
 ├── data/
 │   └── casos.js
 ├── pages/
 │   ├── Busqueda.jsx
+│   ├── CrearCuenta.jsx
 │   ├── Error404.jsx
 │   ├── Home.jsx
+│   ├── IniciarSesion.jsx
 │   ├── RecibirAlertas.jsx
 │   └── Registro.jsx
 ├── App.css
@@ -170,61 +355,70 @@ src/
 └── main.jsx
 ```
 
-## Rutas
+## Diseño responsive
 
-Las rutas se organizan en el componente `Rutas.jsx` utilizando `Routes` y `Route`.
+Se utiliza React Bootstrap junto con clases de Bootstrap y estilos CSS propios.
 
-- `/` - Inicio
-- `/busqueda` - Búsqueda de personas
-- `/registro` - Registrar búsqueda
-- `/alertas` - Recibir alertas
-- `*` - Página de error 404 para rutas inexistentes
+La interfaz se adapta a computadoras, tablets y celulares.
 
-## Responsive
+Se realizaron ajustes en:
 
-La interfaz fue adaptada para diferentes tamaños de pantalla utilizando React Bootstrap, Bootstrap y estilos personalizados.
+- Navbar y menú Offcanvas.
+- Hero y buscador principal.
+- Consulta geográfica.
+- Tarjetas informativas.
+- Tarjetas de personas.
+- Formularios y modales.
+- Distribución de columnas y espaciados.
 
-Se realizaron ajustes específicos para mejorar la visualización del Hero, Navbar, formularios, tarjetas y demás componentes en dispositivos móviles.
+También se unificaron estilos visuales utilizando bordes azul oscuro, esquinas redondeadas y sombras suaves.
 
-## SEO
+## SEO y accesibilidad
 
-Se incorporaron mejoras básicas de SEO en el archivo `index.html`:
+En `index.html` se implementaron mejoras básicas de SEO:
 
-- Idioma principal configurado en español mediante `lang="es"`.
-- Título descriptivo para la página.
-- Meta description con una descripción del propósito de Alerta Búsqueda.
-- Meta keywords relacionadas con la búsqueda de personas desaparecidas.
-- Meta author con los integrantes del proyecto.
-- Favicon de la aplicación.
-- Textos alternativos (`alt`) en las imágenes para mejorar la accesibilidad y la descripción del contenido.
+- Idioma español mediante `lang="es"`.
+- Título descriptivo.
+- Meta description.
+- Meta keywords.
+- Meta author.
+- Favicon personalizado.
 
-## LocalStorage
+Además, se utilizan elementos semánticos de HTML, títulos organizados y textos alternativos en las imágenes.
 
-LocalStorage se utiliza para mantener las solicitudes de búsqueda creadas desde el formulario.
+## Instalación y ejecución
 
-Clave utilizada:
+### 1. Clonar el repositorio
 
-```text
-solicitudesBusqueda
+```bash
+git clone https://github.com/IgnacioRosconi/AlertaBusqueda-frontend.git
 ```
 
-Esto permite visualizar las solicitudes nuevas en la sección de búsqueda sin necesidad de utilizar un backend.
-
-## Instalación
-
-Instalar las dependencias:
+### 2. Instalar las dependencias
 
 ```bash
 npm install
 ```
 
-Ejecutar el proyecto en modo desarrollo:
+### 3. Configurar la API
+
+Crear el archivo `.env` en la carpeta principal y agregar la variable `VITE_GEOREF_API_URL` con la dirección de Georef indicada anteriormente.
+
+### 4. Ejecutar el proyecto
 
 ```bash
 npm run dev
 ```
 
-Generar la versión de producción:
+Abrir en el navegador la dirección local indicada por Vite.
+
+### 5. Verificar el código
+
+```bash
+npm run lint
+```
+
+### 6. Generar la versión de producción
 
 ```bash
 npm run build
@@ -232,53 +426,55 @@ npm run build
 
 ## Deploy
 
-El proyecto se encuentra desplegado mediante Vercel.
+El proyecto está desplegado mediante Vercel:
 
-Producción:
+https://alertabusqueda.vercel.app/
 
-`https://alertabusqueda.vercel.app/`
+Actualmente Vercel utiliza la rama `dev` para el despliegue de Production.
 
-## Flujo de trabajo con Git
+La configuración de la API se realiza mediante las variables de entorno del proyecto en Vercel.
 
-El proyecto utiliza diferentes ramas para organizar el desarrollo.
+## Flujo de trabajo con Git y GitHub
 
-- `main`: versión final y de producción.
-- `dev`: rama de integración.
-- `feature/*`: nuevas funcionalidades.
-- `refactor/*`: migraciones y mejoras de estructura o diseño.
-- `fix/*`: correcciones.
+Se utilizan ramas para organizar el desarrollo y separar las funcionalidades.
 
-Los cambios desarrollados en ramas independientes se integran mediante Pull Requests y revisión de otro integrante del equipo.
+- `main`: rama destinada a la versión final.
+- `dev`: rama de integración y utilizada actualmente para el despliegue en Vercel.
+- `feature/*`: incorporación de funcionalidades.
+- `refactor/*`: mejoras de estructura y organización.
+- `fix/*`: corrección de errores.
+- `docs/*`: cambios en documentación y SEO.
 
-## Hooks
+Los integrantes trabajan en ramas independientes y realizan Pull Requests hacia `dev`.
 
-El proyecto utiliza Hooks de React para manejar estados y ejecutar acciones relacionadas con el ciclo de vida de los componentes.
-
-### useState
-
-Se utiliza `useState` para manejar información que cambia durante la interacción del usuario.
-
-Algunos ejemplos son:
-
-- Texto ingresado en los buscadores.
-- Persona seleccionada para visualizar su detalle.
-- Estado de los modales.
-- Datos ingresados en formularios.
-- Selección de alertas.
-- Solicitudes recuperadas desde LocalStorage.
-
-### useEffect
-
-En la página de búsqueda se utiliza `useEffect` para escuchar cambios en LocalStorage mediante el evento `storage`.
-
-Cuando cambia la información guardada en `solicitudesBusqueda`, el efecto actualiza el estado de las solicitudes mediante `setSolicitudesGuardadas`, permitiendo que React vuelva a renderizar la lista.
-
-El arreglo de dependencias está vacío (`[]`) porque el listener se configura una sola vez cuando se monta el componente.
-
-El efecto también retorna una función de limpieza que elimina el listener cuando el componente deja de utilizarse.
+Los cambios son revisados por el otro integrante antes de integrarlos.
 
 ## Evolución del proyecto
 
-El proyecto evolucionó progresivamente desde su versión inicial hacia una aplicación desarrollada con React + Vite.
+### TP5 - React y componentes
 
-Se incorporaron componentes reutilizables, props, estados con `useState`, efectos con `useEffect`, eventos de React, React Router DOM, páginas independientes, rutas organizadas, formularios, validaciones, LocalStorage, diseño responsive, SEO básico y deploy en Vercel.
+Se migró el proyecto a React + Vite, incorporando componentes reutilizables, JSX, props y React Bootstrap.
+
+### TP6 - React Router
+
+Se organizaron las páginas mediante rutas con React Router DOM y se incorporó una página de error 404.
+
+### TP7 - Hooks de React
+
+Se utilizaron `useState` y `useEffect` para administrar estados, actualizar información y manejar efectos de los componentes.
+
+También se incorporaron formularios de cuentas de prueba, sesiones locales y rutas protegidas.
+
+### TP8 - Axios y API pública
+
+Se instaló Axios y se incorporó la consulta geográfica a la API Georef de Argentina.
+
+Se implementaron solicitudes GET, estados de carga, manejo de errores, actualización dinámica de localidades, `AbortController` y variables de entorno.
+
+## Estado actual
+
+Alerta Búsqueda es un prototipo académico desarrollado con React.
+
+Actualmente permite consultar casos de ejemplo, crear solicitudes locales, simular el registro e inicio de sesión, seleccionar preferencias de alertas y consultar provincias y localidades mediante una API pública.
+
+Para utilizar el sistema con casos reales sería necesario incorporar un backend, una base de datos, autenticación segura y un proceso de verificación de información con las autoridades correspondientes.
