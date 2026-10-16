@@ -1,0 +1,213 @@
+.hero-inicio {
+  min-height: 500px;
+  background-size:
+    100% 100%,
+    auto 100%;
+  background-position:
+    center,
+    calc(100% + clamp(0px, calc(768px - 100vw), 85px)) center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.hero-contenido {
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  min-width: 0;
+}
+
+.hero-buscador {
+  width: 100%;
+  max-width: 650px;
+  min-width: 0;
+}
+
+.hero-buscador .form-control {
+  min-width: 0;
+}
+
+.titulo-inicio {
+  font-size: clamp(28px, 3.2vw, 52px);
+  font-weight: 800;
+  color: #0a2f6b;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.subtitulo-inicio {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  color: #35506f;
+  line-height: 1.5;
+  max-width: 620px;
+}
+
+.tarjeta-beneficio {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.tarjeta-beneficio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(10, 47, 107, 0.15);
+}
+
+.navbar-alerta {
+  min-height: 68px;
+}
+
+.navbar-logo {
+  width: clamp(160px, 18vw, 215px);
+  height: auto;
+  max-height: 46px;
+  object-fit: contain;
+  transform: translateY(5px);
+}
+
+.menu-principal {
+  transform: translateX(-145px);
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .menu-principal {
+    transform: none;
+  }
+}
+
+.nav-link-alerta {
+  position: relative;
+  color: #0a2f6b;
+  padding: 15px 4px 13px;
+  transition: color 0.2s ease;
+}
+
+.nav-link-alerta i {
+  font-size: 15px;
+}
+
+.nav-link-alerta:hover,
+.nav-link-alerta.active,
+.boton-menu-mobile:hover {
+  color: #0d6efd;
+}
+
+.nav-link-alerta.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  height: 3px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+}
+
+.boton-menu-mobile {
+  color: #0a2f6b;
+  font-size: 30px;
+}
+
+.offcanvas-logo {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+  transform: translateY(3px);
+}
+
+.nav-link-mobile {
+  color: #0a2f6b;
+  border-left: 3px solid transparent;
+}
+
+.nav-link-mobile i {
+  font-size: 18px;
+}
+
+.nav-link-mobile:hover {
+  background-color: #f3f6fa;
+  color: #0d6efd;
+}
+
+.nav-link-mobile.active {
+  color: #0d6efd;
+  background-color: #edf4ff;
+  border-left-color: #0d6efd;
+}
+
+.footer-alerta {
+  background-color: #0a2f6b;
+}
+
+.footer-logo {
+  width: 165px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-descripcion {
+  max-width: 320px;
+  color: #dbe7f5;
+  line-height: 1.6;
+}
+
+.footer-enlaces a,
+.footer-texto span {
+  color: #dbe7f5;
+}
+
+.footer-enlaces a:hover {
+  color: #71bfff;
+}
+
+.footer-inferior {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #c6d8ed;
+  font-size: 13px;
+}
+
+.footer-utn-logo {
+  width: 150px;
+  filter: brightness(0) invert(1);
+}
+
+.titulo-busqueda,
+.titulo-modal,
+.titulo-registro,
+.titulo-alertas {
+  color: #0a2f6b;
+}
+
+.persona-card {
+  cursor: pointer;
+}
+
+.persona-card-imagen,
+.persona-card-sin-foto {
+  height: 250px;
+}
+
+.persona-card-imagen {
+  object-fit: cover;
+}
+
+.detalle-persona-imagen {
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.detalle-persona-sin-foto {
+  height: 300px;
+}
+
+.boton-registro,
+.boton-alertas {
+  --bs-btn-bg: #0a2f6b;
+  --bs-btn-border-color: #0a2f6b;
+  --bs-btn-hover-bg: #082758;
+  --bs-btn-hover-border-color: #082758;
+  --bs-btn-active-bg: #082758;
+  --bs-btn-active-border-color: #082758;
+}
+.tarjeta-borde-azul {
+  --bs-border-color: #0a2f6b;
+}
