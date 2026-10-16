@@ -89,8 +89,8 @@ function Hero() {
 
           <Col xs={12} lg={3} className="text-start ms-lg-4">
             <div
-              className="mx-auto mx-lg-0"
-              style={{ maxWidth: "clamp(330px, 80vw, 460px)" }}
+              className="w-100 mx-auto mx-lg-0"
+              style={{ maxWidth: "460px" }}
             >
               <ConsultaGeografica />
             </div>
