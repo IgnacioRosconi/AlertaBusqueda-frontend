@@ -23,7 +23,6 @@ body,
 
 body {
   margin: 0;
-  min-width: 320px;
   background-color: #ffffff;
   color: #212529;
 }
