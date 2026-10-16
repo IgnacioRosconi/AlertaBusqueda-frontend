@@ -430,7 +430,7 @@ El proyecto está desplegado mediante Vercel:
 
 https://alertabusqueda.vercel.app/
 
-Actualmente Vercel utiliza la rama `dev` para el despliegue de Production.
+Vercel utiliza la rama `main` para el despliegue de Production.
 
 La configuración de la API se realiza mediante las variables de entorno del proyecto en Vercel.
 
@@ -439,7 +439,7 @@ La configuración de la API se realiza mediante las variables de entorno del pro
 Se utilizan ramas para organizar el desarrollo y separar las funcionalidades.
 
 - `main`: rama destinada a la versión final.
-- `dev`: rama de integración y utilizada actualmente para el despliegue en Vercel.
+- `dev`: rama de integración y desarrollo, donde se reúnen los cambios antes de incorporarlos a main.
 - `feature/*`: incorporación de funcionalidades.
 - `refactor/*`: mejoras de estructura y organización.
 - `fix/*`: corrección de errores.
